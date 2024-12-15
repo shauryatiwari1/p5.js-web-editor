@@ -5,13 +5,13 @@ services:
       - dbdata:/data/db
   app:
     build:
-      context: ./
+      context: ./ 
       dockerfile: Dockerfile
       target: development
     environment:
       - MONGO_URL=mongodb://mongo:27017/p5js-web-editor
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/app:cached  # Use ':cached' for better host-to-container sync
       - /usr/src/app/node_modules
     ports:
       - '8000:8000'
